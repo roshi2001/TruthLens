@@ -1,0 +1,31 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Data
+data/
+*.parquet
+*.tsv
+*.csv
+
+# Models
+models/
+*.pt
+*.bin
+
+# Node
+frontend/node_modules/
+frontend/.next/
+
+# Dagster
+pipeline/dags/.tmp_dagster_home*/
+pipeline/dags/wandb/
+
+# Docker
+*.log
+
+# VS Code
+.vscode/
