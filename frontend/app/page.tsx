@@ -22,15 +22,23 @@ export default function Home() {
     if (!input.trim()) return;
     setLoading(true);
     setResult(null);
-    // Simulate API call for now
-    await new Promise((r) => setTimeout(r, 2000));
-    setResult({
-      verdict: input.length % 3 === 0 ? "FAKE" : input.length % 3 === 1 ? "REAL" : "UNCERTAIN",
-      confidence: Math.floor(Math.random() * 30) + 70,
-      explanation: "RoBERTa classifier analyzed this claim against 708K+ news articles and knowledge graph entities.",
-      entities: ["Politics", "Healthcare", "Technology"],
-      faithfulness_score: Math.random() * 0.3 + 0.7,
-    });
+    try {
+      const response = await fetch("https://truthlens-production-2160.up.railway.app/api/claims/analyze", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: input }),
+      });
+      const data = await response.json();
+      setResult({
+        verdict: data.verdict as Verdict,
+        confidence: data.confidence,
+        explanation: data.explanation,
+        entities: data.entities,
+        faithfulness_score: data.faithfulness_score,
+      });
+    } catch (error) {
+      console.error("API error:", error);
+    }
     setLoading(false);
   };
 
