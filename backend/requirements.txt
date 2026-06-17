@@ -6,3 +6,4 @@ torch
 transformers
 groq
 neo4j
+sentencepiece
