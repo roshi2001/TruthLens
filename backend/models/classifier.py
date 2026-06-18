@@ -1,8 +1,7 @@
 import torch
 from transformers import RobertaTokenizer, RobertaForSequenceClassification
-import os
 
-MODEL_PATH = os.path.dirname(__file__)
+MODEL_ID = "roshi18/truthlens-roberta"
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -12,9 +11,9 @@ model = None
 def load_model():
     global tokenizer, model
     if model is None:
-        print("Loading TruthLens RoBERTa model...")
-        tokenizer = RobertaTokenizer.from_pretrained(MODEL_PATH)
-        model = RobertaForSequenceClassification.from_pretrained(MODEL_PATH)
+        print("Loading TruthLens RoBERTa model from HuggingFace...")
+        tokenizer = RobertaTokenizer.from_pretrained(MODEL_ID)
+        model = RobertaForSequenceClassification.from_pretrained(MODEL_ID)
         model.to(device)
         model.eval()
         print("Model loaded!")
