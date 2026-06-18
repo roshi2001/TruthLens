@@ -4,6 +4,12 @@
 
 An end-to-end AI-powered misinformation detection platform that streams, processes, and verifies 708K+ real news articles in real time using a knowledge graph, fine-tuned RoBERTa, and hallucination-grounded evaluation.
 
+## Problem & Solution
+
+**Problem:** Misinformation spreads faster than fact-checkers can respond. Existing tools are slow, require manual review, and don't scale to the volume of content published daily.
+
+**Solution:** TruthLens automates fact verification at scale — streaming 708K+ real news articles through a Kafka pipeline into a Neo4j knowledge graph, then using a fine-tuned RoBERTa classifier to detect fake vs real claims in real time with 98.78% F1 accuracy. The system runs continuously on a 6-hour Dagster schedule with full evaluation tracking via DeepEval and Weights & Biases.
+
 ## Live Links
 - 🌐 Frontend: https://truthlens-pied-phi.vercel.app
 - 🔗 API Docs: https://truthlens-production-2160.up.railway.app/docs
