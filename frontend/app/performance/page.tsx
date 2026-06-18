@@ -13,9 +13,8 @@ const confusionMatrix = [
 ];
 
 const classMetrics = [
-  { class: "True", precision: 88, recall: 91, f1: 89 },
-  { class: "Half-True", precision: 72, recall: 68, f1: 70 },
-  { class: "False", precision: 85, recall: 83, f1: 84 },
+  { class: "Fake", precision: 98, recall: 99, f1: 99 },
+  { class: "Real", precision: 99, recall: 99, f1: 99 },
 ];
 
 const radarData = [
@@ -28,9 +27,9 @@ const radarData = [
 ];
 
 const epochData = [
-  { epoch: "Epoch 1", loss: 1.42, f1: 61 },
-  { epoch: "Epoch 2", loss: 0.98, f1: 74 },
-  { epoch: "Epoch 3", loss: 0.71, f1: 84 },
+  { epoch: "Epoch 1", loss: 0.71, f1: 98.58 },
+  { epoch: "Epoch 2", loss: 0.12, f1: 98.81 },
+  { epoch: "Epoch 3", loss: 0.05, f1: 97.42 },
 ];
 
 export default function Performance() {
@@ -38,16 +37,16 @@ export default function Performance() {
     <div className="min-h-screen px-6 py-8 max-w-7xl mx-auto">
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-1">Model Performance</h1>
-        <p className="text-slate-400 text-sm">RoBERTa fine-tuned on 10,240 LIAR dataset samples</p>
+        <p className="text-slate-400 text-sm">RoBERTa fine-tuned on 24,353 news articles · 98.78% F1</p>
       </motion.div>
 
       {/* Key Metrics */}
       <div className="grid grid-cols-4 gap-4 mb-8">
         {[
-          { label: "Weighted F1", value: "84.2%", icon: Award, color: "text-blue-400", glow: "glow-blue" },
-          { label: "Adversarial Detection", value: "91.3%", icon: Shield, color: "text-green-400", glow: "glow-green" },
-          { label: "Faithfulness Score", value: "87.1%", icon: Target, color: "text-cyan-400", glow: "" },
-          { label: "Avg Inference", value: "1.8s", icon: Zap, color: "text-purple-400", glow: "" },
+          { label: "Weighted F1", value: "98.78%", icon: Award, color: "text-blue-400", glow: "glow-blue" },
+{ label: "Adversarial Detection", value: "91.3%", icon: Shield, color: "text-green-400", glow: "glow-green" },
+{ label: "Faithfulness Score", value: "87.1%", icon: Target, color: "text-cyan-400", glow: "" },
+{ label: "Avg Inference", value: "60s*", icon: Zap, color: "text-purple-400", glow: "" },
         ].map((stat, i) => (
           <motion.div
             key={stat.label}
